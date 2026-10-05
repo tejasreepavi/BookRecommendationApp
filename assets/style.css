@@ -1,0 +1,550 @@
+/* ============================================================
+   BookRecommendationApp — AI Powered Glassmorphism UI
+   Design System: Deep Space Dark + Purple→Cyan Gradient
+   ============================================================ */
+
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ── CSS Variables / Design Tokens ── */
+:root {
+    --bg-primary:     #08090f;
+    --bg-secondary:   #0d0e1a;
+    --bg-tertiary:    #12132a;
+    --glass-bg:       rgba(255, 255, 255, 0.04);
+    --glass-border:   rgba(255, 255, 255, 0.10);
+    --glass-hover:    rgba(255, 255, 255, 0.07);
+    --glow-purple:    rgba(139, 92, 246, 0.20);
+    --glow-cyan:      rgba(6, 182, 212, 0.15);
+    --purple:         #8b5cf6;
+    --cyan:           #06b6d4;
+    --purple-mid:     #a855f7;
+    --gradient:       linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+    --gradient-glow:  linear-gradient(135deg, rgba(139,92,246,0.3) 0%, rgba(6,182,212,0.3) 100%);
+    --text-primary:   #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted:     #475569;
+    --radius-sm:      8px;
+    --radius-md:      14px;
+    --radius-lg:      20px;
+    --radius-xl:      28px;
+    --shadow-glow:    0 0 40px rgba(139,92,246,0.15);
+    --transition:     0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Global Reset ── */
+* {
+    box-sizing: border-box;
+}
+
+/* ── App Background ── */
+.stApp {
+    background-color: var(--bg-primary) !important;
+    background-image:
+        radial-gradient(ellipse at 20% 10%, rgba(139,92,246,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, rgba(6,182,212,0.08) 0%, transparent 55%);
+    background-attachment: fixed;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text-primary);
+}
+
+/* ── Typography ── */
+h1, h2, h3 {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    color: var(--text-primary) !important;
+}
+h1 { font-size: 2.6rem !important; font-weight: 700 !important; letter-spacing: -0.5px; }
+h2 { font-size: 1.8rem !important; font-weight: 600 !important; }
+h3 { font-size: 1.3rem !important; font-weight: 600 !important; }
+
+p, li, label, span, div {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ── Hero Banner ── */
+.hero {
+    background: linear-gradient(135deg, #0f0a1e 0%, #1a0a3e 40%, #0a1f3a 100%);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    padding: 52px 40px 44px;
+    text-align: center;
+    margin-bottom: 36px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-glow);
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-glow);
+    opacity: 0.5;
+}
+.hero::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, rgba(139,92,246,0.35) 0%, transparent 70%);
+    border-radius: 50%;
+}
+.hero h1 {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-size: 2.8rem !important;
+    font-weight: 700 !important;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+}
+.hero p {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    line-height: 1.6;
+    max-width: 560px;
+    margin: 0 auto 24px;
+    position: relative;
+    z-index: 1;
+}
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(139,92,246,0.15);
+    border: 1px solid rgba(139,92,246,0.40);
+    color: #c4b5fd;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Stats Row ── */
+.stat-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 20px 16px;
+    text-align: center;
+    transition: var(--transition);
+    backdrop-filter: blur(12px);
+}
+.stat-card:hover {
+    background: var(--glass-hover);
+    border-color: rgba(139,92,246,0.30);
+    box-shadow: 0 0 20px rgba(139,92,246,0.12);
+    transform: translateY(-2px);
+}
+.stat-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.stat-label {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-top: 4px;
+}
+
+/* ── Section Headers ── */
+.section-header {
+    margin: 36px 0 20px;
+}
+.section-header h2 {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    color: var(--text-primary) !important;
+    margin: 0 0 6px;
+}
+.section-header p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* ── Glass Divider ── */
+.glass-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(139,92,246,0.4), rgba(6,182,212,0.3), transparent);
+    margin: 28px 0;
+    border: none;
+}
+
+/* ── Selected Book Card ── */
+.book-detail-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 0 1px rgba(139,92,246,0.08);
+    margin-bottom: 24px;
+    transition: var(--transition);
+}
+.book-detail-card:hover {
+    border-color: rgba(139,92,246,0.20);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 30px rgba(139,92,246,0.08);
+}
+
+/* ── Book cover image ── */
+.book-cover {
+    border-radius: var(--radius-md);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5), 0 0 20px rgba(139,92,246,0.20);
+    transition: transform var(--transition);
+}
+.book-cover:hover {
+    transform: scale(1.03);
+}
+
+/* ── Book metadata inside card ── */
+.book-title-main {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin-bottom: 10px;
+}
+.book-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+.book-meta-row strong {
+    color: var(--text-primary);
+}
+.rating-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(245,158,11,0.12);
+    border: 1px solid rgba(245,158,11,0.25);
+    color: #fbbf24;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.book-description {
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid;
+    border-image: var(--gradient) 1;
+    padding: 12px 16px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-top: 12px;
+}
+
+/* ── CTA Recommendation Button ── */
+.stButton > button {
+    background: var(--gradient) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: var(--radius-md) !important;
+    padding: 14px 28px !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.3px !important;
+    cursor: pointer !important;
+    transition: all var(--transition) !important;
+    box-shadow: 0 4px 20px rgba(139,92,246,0.35) !important;
+    width: 100% !important;
+}
+.stButton > button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 30px rgba(139,92,246,0.50) !important;
+    filter: brightness(1.08) !important;
+}
+.stButton > button:active {
+    transform: translateY(0) !important;
+}
+
+/* ── Recommendation Book Cards ── */
+.rec-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: 16px 14px 18px;
+    text-align: center;
+    transition: all var(--transition);
+    backdrop-filter: blur(12px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.rec-card:hover {
+    background: var(--glass-hover);
+    border-color: rgba(139,92,246,0.35);
+    box-shadow: 0 8px 30px rgba(139,92,246,0.15), 0 0 0 1px rgba(139,92,246,0.12);
+    transform: translateY(-4px);
+}
+.rec-card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 52px;
+}
+.rec-card-author {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+.rec-match-badge {
+    display: inline-block;
+    background: var(--gradient-glow);
+    border: 1px solid rgba(139,92,246,0.30);
+    color: #c4b5fd;
+    font-size: 0.73rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin: 2px auto 0;
+}
+
+/* ── Link buttons inside rec cards ── */
+.stLinkButton > a {
+    background: rgba(139,92,246,0.12) !important;
+    color: #c4b5fd !important;
+    border: 1px solid rgba(139,92,246,0.30) !important;
+    border-radius: var(--radius-sm) !important;
+    font-size: 0.82rem !important;
+    font-weight: 500 !important;
+    padding: 6px 10px !important;
+    transition: all var(--transition) !important;
+    width: 100% !important;
+    text-align: center !important;
+    display: block !important;
+}
+.stLinkButton > a:hover {
+    background: rgba(139,92,246,0.22) !important;
+    border-color: rgba(139,92,246,0.55) !important;
+    color: #e9d5ff !important;
+}
+
+/* ── Search Section ── */
+.search-section {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    backdrop-filter: blur(12px);
+    margin-bottom: 24px;
+}
+.search-result-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 18px;
+    margin-bottom: 14px;
+    transition: var(--transition);
+}
+.search-result-card:hover {
+    background: var(--glass-hover);
+    border-color: rgba(6,182,212,0.25);
+}
+.search-source-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+}
+.label-local {
+    background: rgba(139,92,246,0.12);
+    border: 1px solid rgba(139,92,246,0.25);
+    color: #c4b5fd;
+}
+.label-google {
+    background: rgba(6,182,212,0.10);
+    border: 1px solid rgba(6,182,212,0.25);
+    color: #67e8f9;
+}
+
+/* ── Streamlit input/select overrides ── */
+.stTextInput > div > div > input,
+.stSelectbox > div > div {
+    background: rgba(255,255,255,0.05) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: var(--radius-sm) !important;
+    color: var(--text-primary) !important;
+    font-family: 'Inter', sans-serif !important;
+    transition: border-color var(--transition) !important;
+}
+.stTextInput > div > div > input:focus {
+    border-color: rgba(139,92,246,0.55) !important;
+    box-shadow: 0 0 0 2px rgba(139,92,246,0.12) !important;
+}
+
+/* ── Streamlit metric cards ── */
+[data-testid="stMetricValue"] {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 700 !important;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+[data-testid="stMetricLabel"] {
+    color: var(--text-secondary) !important;
+    font-size: 0.82rem !important;
+}
+
+/* ── Containers ── */
+div[data-testid="stVerticalBlockBorderWrapper"] {
+    border-radius: var(--radius-lg) !important;
+    border: 1px solid var(--glass-border) !important;
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(12px) !important;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.25) !important;
+}
+
+/* ── Images ── */
+img {
+    border-radius: var(--radius-md);
+}
+
+/* ── Sidebar ── */
+[data-testid="stSidebar"] {
+    background: rgba(8,9,15,0.95) !important;
+    border-right: 1px solid var(--glass-border) !important;
+}
+[data-testid="stSidebar"] .stMarkdown {
+    color: var(--text-secondary) !important;
+}
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3 {
+    color: var(--text-primary) !important;
+}
+
+/* ── Alerts / Status ── */
+.stSuccess > div {
+    background: rgba(16,185,129,0.10) !important;
+    border: 1px solid rgba(16,185,129,0.25) !important;
+    border-radius: var(--radius-sm) !important;
+    color: #6ee7b7 !important;
+}
+.stError > div {
+    background: rgba(239,68,68,0.10) !important;
+    border: 1px solid rgba(239,68,68,0.25) !important;
+    border-radius: var(--radius-sm) !important;
+}
+.stWarning > div {
+    background: rgba(245,158,11,0.10) !important;
+    border: 1px solid rgba(245,158,11,0.25) !important;
+    border-radius: var(--radius-sm) !important;
+}
+
+/* ── Info alert (API unavailable notice) ── */
+.stInfo > div {
+    background: rgba(6,182,212,0.08) !important;
+    border: 1px solid rgba(6,182,212,0.20) !important;
+    border-radius: var(--radius-sm) !important;
+    color: #a5f3fc !important;
+}
+
+/* ── Spinner ── */
+.stSpinner > div {
+    border-top-color: var(--purple) !important;
+}
+
+/* ── Divider ── */
+hr {
+    border: none !important;
+    height: 1px !important;
+    background: linear-gradient(90deg, transparent, rgba(139,92,246,0.3), rgba(6,182,212,0.2), transparent) !important;
+    margin: 24px 0 !important;
+}
+
+/* ── Footer ── */
+.footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    padding: 28px 0 12px;
+    border-top: 1px solid var(--glass-border);
+    margin-top: 40px;
+}
+.footer span {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+}
+
+/* ── Error / empty state ── */
+.empty-state {
+    background: var(--glass-bg);
+    border: 1px dashed var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: 36px 24px;
+    text-align: center;
+    color: var(--text-secondary);
+}
+.empty-state-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+.empty-state-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+/* ── Responsive grid helpers ── */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 1.9rem !important; }
+    .hero { padding: 32px 20px 28px; }
+    .rec-card { padding: 12px 10px 14px; }
+    .book-detail-card { padding: 18px; }
+}
+
+/* ── Pulse animation for recommendation button ── */
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 4px 20px rgba(139,92,246,0.35); }
+    50%       { box-shadow: 0 4px 30px rgba(139,92,246,0.60); }
+}
+.stButton > button {
+    animation: pulse-glow 2.5s ease-in-out infinite;
+}
+.stButton > button:hover {
+    animation: none;
+}
+
+/* ── Fade-in animation ── */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+    animation: fadeInUp 0.4s ease forwards;
+}
